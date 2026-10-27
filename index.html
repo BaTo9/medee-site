@@ -19,17 +19,18 @@
     </a>
     <button class="burger" id="burger" aria-label="Цэс нээх">☰</button>
     <nav class="mainnav" id="mainnav">
-      <a href="#" class="active" data-cat="home" onclick="navGo(event,'home')">ЭХЛЭЛ</a>
-      <a href="#" data-cat="uls-tor" onclick="navGo(event,'uls-tor')">УЛС ТӨР</a>
-      <a href="#" data-cat="niigem" onclick="navGo(event,'niigem')">НИЙГЭМ</a>
-      <a href="#" data-cat="ediin-zasag" onclick="navGo(event,'ediin-zasag')">ЭДИЙН ЗАСАГ</a>
-      <a href="#" data-cat="delhii" onclick="navGo(event,'delhii')">ДЭЛХИЙ</a>
-      <a href="#" data-cat="sport" onclick="navGo(event,'sport')">СПОРТ</a>
-      <a href="#" data-cat="soyol" onclick="navGo(event,'soyol')">СОЁЛ УРЛАГ</a>
-      <a href="#" data-cat="tech" onclick="navGo(event,'tech')">ТЕХНОЛОГИ</a>
-      <a href="#" data-cat="video" onclick="navGo(event,'video')">ВИДЕО</a>
+      <a href="#" class="active" data-cat="home" data-i18n="nav_home" onclick="navGo(event,'home')">ЭХЛЭЛ</a>
+      <a href="#" data-cat="uls-tor" data-i18n="nav_uls" onclick="navGo(event,'uls-tor')">УЛС ТӨР</a>
+      <a href="#" data-cat="niigem" data-i18n="nav_niigem" onclick="navGo(event,'niigem')">НИЙГЭМ</a>
+      <a href="#" data-cat="ediin-zasag" data-i18n="nav_ediin" onclick="navGo(event,'ediin-zasag')">ЭДИЙН ЗАСАГ</a>
+      <a href="#" data-cat="delhii" data-i18n="nav_delhii" onclick="navGo(event,'delhii')">ДЭЛХИЙ</a>
+      <a href="#" data-cat="sport" data-i18n="nav_sport" onclick="navGo(event,'sport')">СПОРТ</a>
+      <a href="#" data-cat="soyol" data-i18n="nav_soyol" onclick="navGo(event,'soyol')">СОЁЛ УРЛАГ</a>
+      <a href="#" data-cat="tech" data-i18n="nav_tech" onclick="navGo(event,'tech')">ТЕХНОЛОГИ</a>
+      <a href="#" data-cat="video" data-i18n="nav_video" onclick="navGo(event,'video')">ВИДЕО</a>
     </nav>
     <button class="search-btn" id="searchBtn" aria-label="Хайх">⌕</button>
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()" aria-label="Language / Хэл">EN</button>
   </div>
 </header>
 
@@ -40,7 +41,7 @@
     <div class="trend-right">
       <span id="todayDate">Өнөөдөр: —</span>
       <span class="sep">|</span><span>USD: 3,598₮</span>
-      <span class="sep">|</span><span>☀ Улаанбаатар 4°C</span>
+      <span class="sep">|</span><span id="weatherText">☀ Улаанбаатар 4°C</span>
     </div>
   </div>
 </div>
@@ -49,19 +50,19 @@
 <div class="searchbox" id="searchbox">
   <div class="container">
     <input type="text" id="searchInput" placeholder="Мэдээ хайх… (гарчиг бичээд Enter дарна уу)" onkeydown="if(event.key==='Enter')doSearch()">
-    <button onclick="doSearch()">Хайх</button>
+    <button onclick="doSearch()" data-i18n="search_btn">Хайх</button>
   </div>
   <div class="container search-results" id="searchResults"></div>
 </div>
 
-<div class="ad-band container"><div class="ad-placeholder">СУРТАЛЧИЛГАА · 820×100</div></div>
+<div class="ad-band container"><div class="ad-placeholder" data-i18n="ad">СУРТАЛЧИЛГАА · 820×100</div></div>
 
 <main class="container">
 
   <!-- Дээд хэсэг: ШИНЭ МЭДЭЭ багана + Онцлох -->
   <section class="hero-grid" id="homeTop">
     <aside class="latest">
-      <h2 class="latest-title">шинэ мэдээ</h2>
+      <h2 class="latest-title" data-i18n="latest">шинэ мэдээ</h2>
       <div class="latest-list" id="latestList"></div>
     </aside>
     <div class="featured" id="featuredArea"></div>
@@ -73,16 +74,16 @@
     <div class="cat-grid" id="catGrid"></div>
   </section>
 
-  <div class="ad-band"><div class="ad-placeholder">СУРТАЛЧИЛГАА · 820×100</div></div>
+  <div class="ad-band"><div class="ad-placeholder" data-i18n="ad">СУРТАЛЧИЛГАА · 820×100</div></div>
 
   <!-- УЛС ТӨР / НИЙГЭМ хоёр багана -->
   <section class="two-col">
     <div>
-      <h2 class="section-title">УЛС ТӨР</h2>
+      <h2 class="section-title" data-i18n="sec_politics">УЛС ТӨР</h2>
       <div id="politicsCol"></div>
     </div>
     <div>
-      <h2 class="section-title">НИЙГЭМ</h2>
+      <h2 class="section-title" data-i18n="sec_society">НИЙГЭМ</h2>
       <div id="societyCol"></div>
     </div>
   </section>
@@ -92,7 +93,7 @@
 <!-- ВИДЕО МЭДЭЭ — хар бүс -->
 <section class="video-band">
   <div class="container">
-    <h2 class="section-title light"><span>ВИДЕО</span> МЭДЭЭ</h2>
+    <h2 class="section-title light"><span data-i18n="sec_video_word">ВИДЕО</span> <span data-i18n="sec_news_word">МЭДЭЭ</span></h2>
     <div class="video-grid" id="videoGrid"></div>
   </div>
 </section>
@@ -101,13 +102,13 @@
 
   <!-- НИЙТЛЭЛЧИД -->
   <section>
-    <h2 class="section-title">НИЙТЛЭЛЧИД</h2>
+    <h2 class="section-title" data-i18n="sec_authors">НИЙТЛЭЛЧИД</h2>
     <div class="authors-row" id="authorsRow"></div>
   </section>
 
   <!-- ОРОН НУТАГ -->
   <section>
-    <h2 class="section-title">ОРОН НУТАГ</h2>
+    <h2 class="section-title" data-i18n="sec_local">ОРОН НУТАГ</h2>
     <div class="local-grid" id="localGrid"></div>
   </section>
 
@@ -121,9 +122,9 @@
       <span class="logo-text">TUGEE<em class="logo-suffix-orange">.mn</em></span>
     </a>
     <div class="footer-contact">
-      <p>📍 Улаанбаатар хот (хаяг дараа оруулна)</p>
-      <p>📞 Утас: —</p>
-      <p>✉ И-мэйл: —</p>
+      <p data-i18n="footer_addr">📍 Улаанбаатар хот (хаяг дараа оруулна)</p>
+      <p data-i18n="footer_phone">📞 Утас: —</p>
+      <p data-i18n="footer_mail">✉ И-мэйл: —</p>
     </div>
     <div class="footer-social">
       <a href="#" aria-label="Facebook">f</a>
@@ -131,11 +132,11 @@
       <a href="#" aria-label="X">𝕏</a>
     </div>
     <div class="footer-links">
-      <a href="#">Бидний тухай</a><span>·</span>
-      <a href="#">Сурталчилгаа байршуулах</a><span>·</span>
-      <a href="#">Үйлчилгээний нөхцөл</a>
+      <a href="#" data-i18n="link_about">Бидний тухай</a><span>·</span>
+      <a href="#" data-i18n="link_ads">Сурталчилгаа байршуулах</a><span>·</span>
+      <a href="#" data-i18n="link_terms">Үйлчилгээний нөхцөл</a>
     </div>
-    <p class="copyright">© 2026 TUGEE.mn (ТҮГЭЭ). Бүх эрх хуулиар хамгаалагдсан.</p>
+    <p class="copyright" data-i18n="copyright">© 2026 TUGEE.mn (ТҮГЭЭ). Бүх эрх хуулиар хамгаалагдсан.</p>
   </div>
 </footer>
 

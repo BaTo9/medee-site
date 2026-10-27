@@ -28,6 +28,8 @@ img{display:block;width:100%;object-fit:cover}
 .mainnav a:hover{background:var(--orange-dark)}
 .mainnav a.active{background:var(--orange-dark)}
 .search-btn{background:none;border:none;color:#fff;font-size:26px;cursor:pointer;line-height:1;padding:4px 6px}
+.lang-btn{background:transparent;border:1.5px solid rgba(255,255,255,.85);color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:5px 12px;cursor:pointer;flex-shrink:0;letter-spacing:.5px}
+.lang-btn:hover{background:#fff;color:var(--orange)}
 .burger{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
 
 /* TREND */
