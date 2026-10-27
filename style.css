@@ -33,9 +33,9 @@ img{display:block;width:100%;object-fit:cover}
 /* TREND */
 .trendbar{background:#fff;border-bottom:1px solid var(--line);font-size:13px}
 .trend-inner{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px}
-.trend-left{flex:1;min-width:0}
-.trend-label{color:var(--orange);font-weight:800}
-.trend-text{color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:100%;vertical-align:bottom}
+.trend-left{flex:1;min-width:0;display:flex;gap:8px;align-items:flex-start}
+.trend-label{color:var(--orange);font-weight:800;flex-shrink:0}
+.trend-text{color:#333;flex:1;min-width:0;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .trend-right{color:#555;flex-shrink:0}
 .trend-right .sep{margin:0 8px;color:#ccc}
 
