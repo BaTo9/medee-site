@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мэдээ — Мэдээний сайт</title>
+<meta name="description" content="Мэдээний сайт — шинэ мэдээ, улс төр, нийгэм, эдийн засаг, дэлхий, спорт, видео мэдээ.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%232b2b2b'/><polygon points='40,32 72,50 40,68' fill='white'/></svg>">
+</head>
+<body>
+
+<!-- Улбар шар наалддаг толгой + үндсэн цэс -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="logo" href="#" onclick="goHome(event)">
+      <span class="logo-mark"><span class="logo-play"></span></span>
+      <span class="logo-text">medee<em>.mn</em></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Цэс нээх">☰</button>
+    <nav class="mainnav" id="mainnav">
+      <a href="#" class="active" data-cat="home" onclick="navGo(event,'home')">ЭХЛЭЛ</a>
+      <a href="#" data-cat="uls-tor" onclick="navGo(event,'uls-tor')">УЛС ТӨР</a>
+      <a href="#" data-cat="niigem" onclick="navGo(event,'niigem')">НИЙГЭМ</a>
+      <a href="#" data-cat="ediin-zasag" onclick="navGo(event,'ediin-zasag')">ЭДИЙН ЗАСАГ</a>
+      <a href="#" data-cat="delhii" onclick="navGo(event,'delhii')">ДЭЛХИЙ</a>
+      <a href="#" data-cat="sport" onclick="navGo(event,'sport')">СПОРТ</a>
+      <a href="#" data-cat="soyol" onclick="navGo(event,'soyol')">СОЁЛ УРЛАГ</a>
+      <a href="#" data-cat="tech" onclick="navGo(event,'tech')">ТЕХНОЛОГИ</a>
+      <a href="#" data-cat="video" onclick="navGo(event,'video')">ВИДЕО</a>
+    </nav>
+    <button class="search-btn" id="searchBtn" aria-label="Хайх">⌕</button>
+  </div>
+</header>
+
+<!-- TREND мөр -->
+<div class="trendbar">
+  <div class="container trend-inner">
+    <div class="trend-left"><span class="trend-label">TREND:</span> <span id="trendText" class="trend-text"></span></div>
+    <div class="trend-right">
+      <span id="todayDate">Өнөөдөр: —</span>
+      <span class="sep">|</span><span>USD: 3,598₮</span>
+      <span class="sep">|</span><span>☀ Улаанбаатар 4°C</span>
+    </div>
+  </div>
+</div>
+
+<!-- Хайлтын хэсэг -->
+<div class="searchbox" id="searchbox">
+  <div class="container">
+    <input type="text" id="searchInput" placeholder="Мэдээ хайх… (гарчиг бичээд Enter дарна уу)" onkeydown="if(event.key==='Enter')doSearch()">
+    <button onclick="doSearch()">Хайх</button>
+  </div>
+  <div class="container search-results" id="searchResults"></div>
+</div>
+
+<div class="ad-band container"><div class="ad-placeholder">СУРТАЛЧИЛГАА · 820×100</div></div>
+
+<main class="container">
+
+  <!-- Дээд хэсэг: ШИНЭ МЭДЭЭ багана + Онцлох -->
+  <section class="hero-grid" id="homeTop">
+    <aside class="latest">
+      <h2 class="latest-title">шинэ мэдээ</h2>
+      <div class="latest-list" id="latestList"></div>
+    </aside>
+    <div class="featured" id="featuredArea"></div>
+  </section>
+
+  <!-- Ангиллын жагсаалт (цэснээс сонгоход энд харагдана) -->
+  <section class="catview" id="catView" style="display:none">
+    <h2 class="section-title" id="catViewTitle"></h2>
+    <div class="cat-grid" id="catGrid"></div>
+  </section>
+
+  <div class="ad-band"><div class="ad-placeholder">СУРТАЛЧИЛГАА · 820×100</div></div>
+
+  <!-- УЛС ТӨР / НИЙГЭМ хоёр багана -->
+  <section class="two-col">
+    <div>
+      <h2 class="section-title">УЛС ТӨР</h2>
+      <div id="politicsCol"></div>
+    </div>
+    <div>
+      <h2 class="section-title">НИЙГЭМ</h2>
+      <div id="societyCol"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ВИДЕО МЭДЭЭ — хар бүс -->
+<section class="video-band">
+  <div class="container">
+    <h2 class="section-title light"><span>ВИДЕО</span> МЭДЭЭ</h2>
+    <div class="video-grid" id="videoGrid"></div>
+  </div>
+</section>
+
+<main class="container">
+
+  <!-- НИЙТЛЭЛЧИД -->
+  <section>
+    <h2 class="section-title">НИЙТЛЭЛЧИД</h2>
+    <div class="authors-row" id="authorsRow"></div>
+  </section>
+
+  <!-- ОРОН НУТАГ -->
+  <section>
+    <h2 class="section-title">ОРОН НУТАГ</h2>
+    <div class="local-grid" id="localGrid"></div>
+  </section>
+
+</main>
+
+<!-- Хөл -->
+<footer class="footer">
+  <div class="container">
+    <a class="logo footer-logo" href="#" onclick="goHome(event)">
+      <span class="logo-mark"><span class="logo-play"></span></span>
+      <span class="logo-text">medee<em>.mn</em></span>
+    </a>
+    <div class="footer-contact">
+      <p>📍 Улаанбаатар хот (хаяг дараа оруулна)</p>
+      <p>📞 Утас: —</p>
+      <p>✉ И-мэйл: —</p>
+    </div>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="YouTube">▶</a>
+      <a href="#" aria-label="X">𝕏</a>
+    </div>
+    <div class="footer-links">
+      <a href="#">Бидний тухай</a><span>·</span>
+      <a href="#">Сурталчилгаа байршуулах</a><span>·</span>
+      <a href="#">Үйлчилгээний нөхцөл</a>
+    </div>
+    <p class="copyright">© 2026 Мэдээний сайт. Бүх эрх хуулиар хамгаалагдсан.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Дээшээ">↑</button>
+
+<!-- Мэдээний дэлгэрэнгүй цонх -->
+<div class="modal" id="articleModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeArticle()">✕</button>
+    <img id="modalImg" alt="">
+    <div class="modal-body">
+      <span class="modal-cat" id="modalCat"></span>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-time" id="modalTime"></p>
+      <p id="modalText"></p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

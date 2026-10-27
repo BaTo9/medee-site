@@ -1,0 +1,166 @@
+:root{
+  --orange:#e85a17;
+  --orange-dark:#c94a0e;
+  --dark:#2b2b2b;
+  --grey:#8a8a8a;
+  --line:#e6e6e6;
+  --panel:#f7f7f7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* Толгой */
+.topbar{background:var(--orange);position:sticky;top:0;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:18px;min-height:56px}
+.logo{display:flex;align-items:center;gap:9px;color:#fff;flex-shrink:0}
+.logo-mark{width:36px;height:36px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.55)}
+.logo-play{width:0;height:0;border-left:13px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.logo-text{font-size:24px;font-weight:800;letter-spacing:-.5px}
+.logo-text em{font-style:normal;opacity:.85;font-weight:600}
+.mainnav{display:flex;flex-wrap:wrap;flex:1}
+.mainnav a{color:#fff;font-weight:700;font-size:13.5px;text-transform:uppercase;padding:10px 11px;white-space:nowrap}
+.mainnav a:hover{background:var(--orange-dark)}
+.mainnav a.active{background:var(--orange-dark)}
+.search-btn{background:none;border:none;color:#fff;font-size:26px;cursor:pointer;line-height:1;padding:4px 6px}
+.burger{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
+
+/* TREND */
+.trendbar{background:#fff;border-bottom:1px solid var(--line);font-size:13px}
+.trend-inner{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px}
+.trend-label{color:var(--orange);font-weight:800}
+.trend-text{color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:520px;vertical-align:bottom}
+.trend-right{color:#555;flex-shrink:0}
+.trend-right .sep{margin:0 8px;color:#ccc}
+
+/* Хайлт */
+.searchbox{display:none;background:var(--panel);border-bottom:1px solid var(--line);padding:14px 0}
+.searchbox.open{display:block}
+.searchbox .container{display:flex;gap:10px}
+.searchbox input{flex:1;padding:11px 14px;border:1px solid #ddd;border-radius:4px;font-size:15px}
+.searchbox button{background:var(--orange);color:#fff;border:none;padding:11px 22px;border-radius:4px;font-weight:700;cursor:pointer}
+.search-results{flex-direction:column;gap:0}
+.search-results a{display:block;padding:10px 4px;border-bottom:1px dotted #ccc;font-weight:600}
+.search-results a:hover{color:var(--orange)}
+
+/* Сурталчилгаа */
+.ad-band{margin:14px auto}
+.ad-placeholder{background:#f0f0f0;border:1px dashed #ccc;color:#999;text-align:center;padding:26px 0;font-size:13px;letter-spacing:2px}
+
+/* Гарчиг */
+.section-title{color:var(--orange);text-transform:uppercase;font-size:21px;font-weight:800;border-top:3px dotted var(--orange);padding-top:12px;margin:26px 0 16px}
+.section-title.light{border-top-color:#fff;color:#fff}
+.section-title.light span{color:var(--orange)}
+
+/* Дээд хэсэг */
+.hero-grid{display:grid;grid-template-columns:300px 1fr;gap:26px;margin-top:18px}
+.latest-title{color:var(--orange);font-size:20px;font-weight:800;border-top:4px solid var(--orange);border-bottom:1px dotted var(--orange);padding:8px 0 10px;text-transform:lowercase}
+.latest-list{max-height:760px;overflow-y:auto;padding-right:6px}
+.latest-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.latest-item img{width:74px;height:56px;flex-shrink:0;border-radius:2px}
+.latest-item h4{font-size:13.5px;line-height:1.35;font-weight:600}
+.latest-item:hover h4{color:var(--orange)}
+.time{color:var(--grey);font-size:12px;margin-top:4px}
+.time::before{content:"◷ "}
+
+.featured{display:grid;grid-template-columns:2fr 1fr;gap:16px;align-content:start}
+.feat-card{cursor:pointer}
+.feat-card .imgwrap{position:relative}
+.feat-card img{border-radius:2px}
+.feat-card h3{background:var(--panel);padding:12px 14px;font-size:16px;line-height:1.4}
+.feat-card:hover h3{color:var(--orange)}
+.feat-card .time{background:var(--panel);padding:0 14px 12px;margin-top:0}
+.feat-lead{grid-column:1/2}
+.feat-lead img{height:340px}
+.feat-lead h3{font-size:21px}
+.feat-lead .time-tab{position:absolute;left:0;bottom:0;background:rgba(43,43,43,.85);color:#fff;font-size:12px;padding:5px 10px}
+.feat-mid img{height:200px}
+.feat-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat-row .feat-card img{height:130px}
+.feat-row .feat-card h3{font-size:14.5px}
+
+/* Ангиллын харагдац */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cat-grid .feat-card img{height:170px}
+
+/* Хоёр багана */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.mini-row{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.mini-row img{width:110px;height:76px;flex-shrink:0;border-radius:2px}
+.mini-row h4{font-size:14.5px;line-height:1.4}
+.mini-row:hover h4{color:var(--orange)}
+.col-lead{cursor:pointer}
+.col-lead img{height:230px}
+.col-lead h3{background:var(--panel);padding:12px 14px;font-size:17px}
+.col-lead:hover h3{color:var(--orange)}
+
+/* Видео */
+.video-band{background:var(--dark);padding:8px 0 34px;margin-top:34px}
+.video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.video-card{cursor:pointer;color:#fff}
+.video-card .imgwrap{position:relative}
+.video-card img{height:150px;border-radius:2px}
+.play-badge{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;background:rgba(232,90,23,.95);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+.video-card h4{padding:10px 2px 0;font-size:14.5px;line-height:1.4}
+.video-card:hover h4{color:var(--orange)}
+
+/* Нийтлэлчид */
+.authors-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.author-card{background:var(--panel);padding:18px;border-top:3px solid var(--orange)}
+.author-card .a-name{text-transform:uppercase;font-weight:800;font-size:13px;color:#555;letter-spacing:.5px}
+.author-card .a-quote{font-size:16px;font-weight:700;line-height:1.45;margin-top:8px}
+
+/* Орон нутаг */
+.local-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px}
+.local-card{cursor:pointer}
+.local-card img{height:150px;border-radius:2px}
+.local-card h4{font-size:15px;padding:10px 2px 4px;line-height:1.4}
+.local-card:hover h4{color:var(--orange)}
+.region-tag{color:var(--orange);font-size:13px;font-weight:700}
+
+/* Хөл */
+.footer{background:var(--dark);color:#ddd;padding:34px 0 22px;margin-top:10px}
+.footer-logo{margin-bottom:16px}
+.footer-contact p{margin:5px 0;font-size:14px}
+.footer-social{display:flex;gap:10px;margin:18px 0}
+.footer-social a{width:38px;height:38px;border:1.5px solid #777;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;border-radius:3px}
+.footer-social a:hover{border-color:var(--orange);color:var(--orange)}
+.footer-links{display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid #444;padding-top:16px;font-size:14px}
+.footer-links a:hover{color:var(--orange)}
+.copyright{text-align:center;color:#999;font-size:12.5px;margin-top:18px}
+
+/* Дээш гарах товч */
+.to-top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;border:none;font-size:20px;cursor:pointer;display:none;z-index:60;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.to-top.show{display:block}
+
+/* Модал */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;overflow-y:auto;padding:26px 14px}
+.modal.open{display:block}
+.modal-card{background:#fff;max-width:760px;margin:0 auto;border-radius:4px;overflow:hidden;position:relative}
+.modal-card img{max-height:400px}
+.modal-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;z-index:2}
+.modal-body{padding:22px 26px 30px}
+.modal-cat{color:var(--orange);font-weight:800;text-transform:uppercase;font-size:13px}
+.modal-body h2{font-size:25px;line-height:1.35;margin:8px 0 6px}
+.modal-time{color:var(--grey);font-size:13px;margin-bottom:14px}
+.modal-body p:last-child{font-size:16.5px;line-height:1.75;color:#222;white-space:pre-line}
+
+/* Гар утас */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .latest-list{max-height:340px}
+  .featured{grid-template-columns:1fr}
+  .feat-row,.cat-grid,.video-grid,.authors-row,.local-grid{grid-template-columns:1fr 1fr}
+  .two-col{grid-template-columns:1fr}
+  .mainnav{display:none;position:absolute;top:56px;left:0;right:0;background:var(--orange);flex-direction:column;padding:8px 0}
+  .mainnav.open{display:flex}
+  .burger{display:block;margin-left:auto}
+  .trend-right{display:none}
+  .feat-lead img{height:230px}
+}
+@media(max-width:520px){
+  .feat-row,.cat-grid,.video-grid,.authors-row,.local-grid{grid-template-columns:1fr}
+  .logo-text{font-size:20px}
+}
