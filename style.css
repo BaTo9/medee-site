@@ -16,10 +16,12 @@ img{display:block;width:100%;object-fit:cover}
 .topbar{background:var(--orange);position:sticky;top:0;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .topbar-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:18px;min-height:56px}
 .logo{display:flex;align-items:center;gap:9px;color:#fff;flex-shrink:0}
-.logo-mark{width:36px;height:36px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.55)}
-.logo-play{width:0;height:0;border-left:13px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
-.logo-text{font-size:24px;font-weight:800;letter-spacing:-.5px}
-.logo-text em{font-style:normal;opacity:.85;font-weight:600}
+.logo-img{width:38px;height:38px;object-fit:contain;border-radius:9px;box-shadow:0 1px 3px rgba(0,0,0,.25);flex-shrink:0}
+.logo-text{font-size:25px;font-weight:800;letter-spacing:-.5px}
+.logo-text em{font-style:normal}
+.logo-suffix-dark{color:var(--dark);font-weight:800}
+.footer .logo-suffix-orange{color:var(--orange);font-weight:800}
+.footer .logo-img{box-shadow:none}
 .mainnav{display:flex;flex-wrap:wrap;flex:1}
 .mainnav a{color:#fff;font-weight:700;font-size:13.5px;text-transform:uppercase;padding:10px 11px;white-space:nowrap}
 .mainnav a:hover{background:var(--orange-dark)}
