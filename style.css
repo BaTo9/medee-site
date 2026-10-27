@@ -7,6 +7,7 @@
   --panel:#f7f7f7;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
 body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%;object-fit:cover}
@@ -32,8 +33,9 @@ img{display:block;width:100%;object-fit:cover}
 /* TREND */
 .trendbar{background:#fff;border-bottom:1px solid var(--line);font-size:13px}
 .trend-inner{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px}
+.trend-left{flex:1;min-width:0}
 .trend-label{color:var(--orange);font-weight:800}
-.trend-text{color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:520px;vertical-align:bottom}
+.trend-text{color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:100%;vertical-align:bottom}
 .trend-right{color:#555;flex-shrink:0}
 .trend-right .sep{margin:0 8px;color:#ccc}
 
@@ -41,7 +43,7 @@ img{display:block;width:100%;object-fit:cover}
 .searchbox{display:none;background:var(--panel);border-bottom:1px solid var(--line);padding:14px 0}
 .searchbox.open{display:block}
 .searchbox .container{display:flex;gap:10px}
-.searchbox input{flex:1;padding:11px 14px;border:1px solid #ddd;border-radius:4px;font-size:15px}
+.searchbox input{flex:1;min-width:0;padding:11px 14px;border:1px solid #ddd;border-radius:4px;font-size:15px}
 .searchbox button{background:var(--orange);color:#fff;border:none;padding:11px 22px;border-radius:4px;font-weight:700;cursor:pointer}
 .search-results{flex-direction:column;gap:0}
 .search-results a{display:block;padding:10px 4px;border-bottom:1px dotted #ccc;font-weight:600}
@@ -58,6 +60,8 @@ img{display:block;width:100%;object-fit:cover}
 
 /* Дээд хэсэг */
 .hero-grid{display:grid;grid-template-columns:300px 1fr;gap:26px;margin-top:18px}
+.hero-grid>*,.featured>*,.feat-row>*,.cat-grid>*,.two-col>*,.video-grid>*,.authors-row>*,.local-grid>*{min-width:0}
+.latest-item>div,.mini-row>div{min-width:0}
 .latest-title{color:var(--orange);font-size:20px;font-weight:800;border-top:4px solid var(--orange);border-bottom:1px dotted var(--orange);padding:8px 0 10px;text-transform:lowercase}
 .latest-list{max-height:760px;overflow-y:auto;padding-right:6px}
 .latest-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
