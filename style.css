@@ -7,8 +7,9 @@
   --panel:#f7f7f7;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
-body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;touch-action:pan-y;overscroll-behavior-x:none}
+body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased;position:relative}
+img,svg,video,iframe{max-width:100%}
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%;object-fit:cover}
 .container{max-width:1200px;margin:0 auto;padding:0 16px}
