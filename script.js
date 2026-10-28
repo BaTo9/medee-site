@@ -5,7 +5,7 @@ const UI = {
   mn: {
     nav_home: "ЭХЛЭЛ", nav_uls: "УЛС ТӨР", nav_niigem: "НИЙГЭМ", nav_ediin: "ЭДИЙН ЗАСАГ",
     nav_delhii: "ДЭЛХИЙ", nav_sport: "СПОРТ", nav_soyol: "СОЁЛ УРЛАГ", nav_tech: "ТЕХНОЛОГИ", nav_video: "ВИДЕО",
-    search_ph: "Мэдээ хайх… (гарчиг бичээд Enter дарна уу)", search_btn: "Хайх",
+    trend_label: "ТРЭНД:", search_ph: "Мэдээ хайх… (гарчиг бичээд Enter дарна уу)", search_btn: "Хайх",
     ad: "СУРТАЛЧИЛГАА · 820×100", latest: "шинэ мэдээ",
     sec_politics: "УЛС ТӨР", sec_society: "НИЙГЭМ", sec_video_word: "ВИДЕО", sec_news_word: "МЭДЭЭ",
     sec_authors: "НИЙТЛЭЛЧИД", sec_local: "ОРОН НУТАГ",
@@ -19,7 +19,7 @@ const UI = {
   en: {
     nav_home: "HOME", nav_uls: "POLITICS", nav_niigem: "SOCIETY", nav_ediin: "ECONOMY",
     nav_delhii: "WORLD", nav_sport: "SPORTS", nav_soyol: "CULTURE", nav_tech: "TECHNOLOGY", nav_video: "VIDEO",
-    search_ph: "Search news… (type a headline and press Enter)", search_btn: "Search",
+    trend_label: "TREND:", search_ph: "Search news… (type a headline and press Enter)", search_btn: "Search",
     ad: "ADVERTISEMENT · 820×100", latest: "latest news",
     sec_politics: "POLITICS", sec_society: "SOCIETY", sec_video_word: "VIDEO", sec_news_word: "NEWS",
     sec_authors: "COLUMNISTS", sec_local: "REGIONS",
@@ -166,6 +166,8 @@ function applyLang(){
   if(inp) inp.placeholder = t("search_ph");
   const w = document.getElementById("weatherText");
   if(w) w.textContent = t("weather");
+  document.querySelectorAll(".js-logo-name").forEach(el=>{ el.textContent = LANG === "en" ? "TUGEE" : "ТҮГЭЭ"; });
+  document.querySelectorAll(".js-logo-suffix").forEach(el=>{ el.textContent = LANG === "en" ? ".mn" : ".мн"; });
   const lb = document.getElementById("langBtn");
   if(lb) lb.textContent = LANG === "en" ? "MN" : "EN";
   const now = new Date();
