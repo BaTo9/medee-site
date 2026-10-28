@@ -54,6 +54,8 @@ img{display:block;width:100%;object-fit:cover}
 /* Сурталчилгаа */
 .ad-band{margin:14px auto}
 .ad-placeholder{background:#f0f0f0;border:1px dashed #ccc;color:#999;text-align:center;padding:26px 0;font-size:13px;letter-spacing:2px}
+.ad-banner{display:block}
+.ad-banner img{width:100%;height:auto;border-radius:10px}
 
 /* Гарчиг */
 .section-title{color:var(--orange);text-transform:uppercase;font-size:21px;font-weight:800;border-top:3px dotted var(--orange);padding-top:12px;margin:26px 0 16px}
