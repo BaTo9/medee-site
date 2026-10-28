@@ -7,7 +7,8 @@
   --panel:#f7f7f7;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;touch-action:pan-y;overscroll-behavior-x:none}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;touch-action:pan-y;overscroll-behavior-x:none;-webkit-text-size-adjust:100%}
+.page-wrap{position:relative;width:100%;max-width:100%;overflow-x:hidden;overflow-x:clip}
 body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased;position:relative}
 img,svg,video,iframe{max-width:100%}
 a{text-decoration:none;color:inherit}
@@ -46,7 +47,7 @@ img{display:block;width:100%;object-fit:cover}
 .searchbox{display:none;background:var(--panel);border-bottom:1px solid var(--line);padding:14px 0}
 .searchbox.open{display:block}
 .searchbox .container{display:flex;gap:10px}
-.searchbox input{flex:1;min-width:0;padding:11px 14px;border:1px solid #ddd;border-radius:4px;font-size:15px}
+.searchbox input{flex:1;min-width:0;padding:11px 14px;border:1px solid #ddd;border-radius:4px;font-size:16px}
 .searchbox button{background:var(--orange);color:#fff;border:none;padding:11px 22px;border-radius:4px;font-weight:700;cursor:pointer}
 .search-results{flex-direction:column;gap:0}
 .search-results a{display:block;padding:10px 4px;border-bottom:1px dotted #ccc;font-weight:600}
