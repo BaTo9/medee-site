@@ -149,7 +149,7 @@ img{display:block;width:100%;object-fit:cover}
 /* Хөл */
 .footer{background:var(--dark);color:#ddd;padding:34px 0 22px;margin-top:10px}
 .footer-logo{margin-bottom:10px}
-.tagline{margin:0 0 16px;font-size:15px;font-style:italic;color:#e8e8e8}
+.tagline{margin:0 0 16px;font-size:15px;font-style:italic;color:#e8e8e8;border-bottom:2px solid rgba(255,255,255,.85);padding-bottom:12px}
 .footer-contact p{margin:5px 0;font-size:14px}
 .footer-mail{color:#fff}
 .footer-mail:hover{color:var(--orange)}
