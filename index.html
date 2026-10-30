@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Монголын болон дэлхийн шинэ мэдээ — өглөө бүр 06:00-д шинэчлэгдэнэ.">
 <meta name="twitter:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Panorama%20Ulan%20Bator%2037.JPG?width=1200">
 <meta name="theme-color" content="#d92323">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 <link rel="icon" type="image/svg+xml" href="logo-mark.svg">
 </head>
 <body>
@@ -54,9 +54,17 @@
     <div class="trend-left"><span class="trend-label" data-i18n="trend_label">ТРЭНД:</span> <span id="trendText" class="trend-text"></span></div>
     <div class="trend-right">
       <span id="todayDate">Өнөөдөр: —</span>
-      <span class="sep">|</span><span>USD: 3,598₮</span>
+      <span class="sep">|</span><span id="usdText">USD: —</span>
       <span class="sep">|</span><span id="weatherText">☀ Улаанбаатар 4°C</span>
     </div>
+  </div>
+</div>
+
+<!-- Ханш · Цаг агаар — урсдаг мөр -->
+<div class="databar">
+  <div class="container databar-inner">
+    <span class="databar-label" data-i18n="databar_label">ХАНШ · ЦАГ АГААР</span>
+    <div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
   </div>
 </div>
 
@@ -200,6 +208,6 @@
 </div>
 
 </div>
-<script src="script.js?v=14"></script>
+<script src="script.js?v=15"></script>
 </body>
 </html>

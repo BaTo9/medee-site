@@ -5,7 +5,7 @@ const UI = {
   mn: {
     nav_home: "ЭХЛЭЛ", nav_uls: "УЛС ТӨР", nav_niigem: "НИЙГЭМ", nav_ediin: "ЭДИЙН ЗАСАГ",
     nav_delhii: "ДЭЛХИЙ", nav_sport: "СПОРТ", nav_soyol: "СОЁЛ УРЛАГ", nav_tech: "ТЕХНОЛОГИ", nav_video: "ВИДЕО",
-    trend_label: "ТРЭНД:", search_ph: "Мэдээ хайх… (гарчиг бичээд Enter дарна уу)", search_btn: "Хайх",
+    trend_label: "ТРЭНД:", databar_label: "ХАНШ · ЦАГ АГААР", search_ph: "Мэдээ хайх… (гарчиг бичээд Enter дарна уу)", search_btn: "Хайх",
     ad: "СУРТАЛЧИЛГАА · 820×100", latest: "шинэ мэдээ",
     sec_politics: "УЛС ТӨР", sec_society: "НИЙГЭМ", sec_video_word: "ВИДЕО", sec_news_word: "МЭДЭЭ",
     sec_authors: "НИЙТЛЭЛЧИД", sec_local: "ОРОН НУТАГ", sec_world: "ГАДААД",
@@ -19,7 +19,7 @@ const UI = {
   en: {
     nav_home: "HOME", nav_uls: "POLITICS", nav_niigem: "SOCIETY", nav_ediin: "ECONOMY",
     nav_delhii: "WORLD", nav_sport: "SPORTS", nav_soyol: "CULTURE", nav_tech: "TECHNOLOGY", nav_video: "VIDEO",
-    trend_label: "TREND:", search_ph: "Search news… (type a headline and press Enter)", search_btn: "Search",
+    trend_label: "TREND:", databar_label: "RATES · WEATHER", search_ph: "Search news… (type a headline and press Enter)", search_btn: "Search",
     ad: "ADVERTISEMENT · 820×100", latest: "latest news",
     sec_politics: "POLITICS", sec_society: "SOCIETY", sec_video_word: "VIDEO", sec_news_word: "NEWS",
     sec_authors: "COLUMNISTS", sec_local: "REGIONS", sec_world: "WORLD",
@@ -81,6 +81,66 @@ function aTime(a){ return LANG === "en" ? (a.timeEn || a.time) : a.time; }
 function aText(a){ if(a.text) return LANG === "en" ? (a.textEn || a.text) : a.text; return SAMPLE_TEXT[LANG][a.id === 1 ? "long" : "short"]; }
 function aRegion(a){ return a.region ? ((REGIONS[LANG] && REGIONS[LANG][a.region]) || a.region) : ""; }
 
+// ===== Ханш · Цаг агаар (өдөр бүр шинэчлэгдэнэ; цаг агаарыг Open-Meteo-гоос шууд татна) =====
+const RATES = {date:"2026-10-30", items:[
+  {code:"USD", mnt:3599.08, chg:0}, {code:"EUR", mnt:4010.63, chg:0}, {code:"JPY", mnt:22.55, chg:0},
+  {code:"CNY", mnt:540.29, chg:0}, {code:"KRW", mnt:2.56, chg:0}, {code:"RUB", mnt:38.76, chg:0}, {code:"GBP", mnt:4776.00, chg:0}
+]};
+let WEATHER = [
+  {city:"Улаанбаатар", cityEn:"Ulaanbaatar", lat:47.9212, lon:106.9186, tz:"Asia/Ulaanbaatar", temp:-7, code:1},
+  {city:"Токио", cityEn:"Tokyo", lat:35.6762, lon:139.6503, tz:"Asia/Tokyo", temp:20, code:1},
+  {city:"Сөүл", cityEn:"Seoul", lat:37.5665, lon:126.978, tz:"Asia/Seoul", temp:15, code:0},
+  {city:"Бээжин", cityEn:"Beijing", lat:39.9042, lon:116.4074, tz:"Asia/Shanghai", temp:16, code:0},
+  {city:"Москва", cityEn:"Moscow", lat:55.7558, lon:37.6173, tz:"Europe/Moscow", temp:5, code:3}
+];
+function wIcon(code){
+  if(code === 0) return "☀️";
+  if(code === 1) return "🌤️";
+  if(code === 2) return "⛅";
+  if(code === 3) return "☁️";
+  if(code === 45 || code === 48) return "🌫️";
+  if(code === 51 || code === 53 || code === 55 || code === 80) return "🌦️";
+  if(code === 56 || code === 57 || code === 61 || code === 63 || code === 65 || code === 66 || code === 67 || code === 81 || code === 82) return "🌧️";
+  if(code === 71 || code === 73 || code === 75 || code === 77 || code === 85 || code === 86) return "❄️";
+  if(code >= 95) return "⛈️";
+  return "🌡️";
+}
+function fmtRate(v){
+  if(v >= 100) return Math.round(v).toLocaleString("en-US");
+  return v.toFixed(2);
+}
+function renderData(){
+  const parts = [];
+  RATES.items.forEach(r=>{
+    let arrow = "";
+    if(r.chg > 0) arrow = ' <span class="up">▲</span>';
+    else if(r.chg < 0) arrow = ' <span class="down">▼</span>';
+    parts.push(`<span class="tk"><b>${r.code}</b> ${fmtRate(r.mnt)}₮${arrow}</span>`);
+  });
+  WEATHER.forEach(w=>{
+    const name = LANG === "en" ? w.cityEn : w.city;
+    const t = w.temp > 0 ? "+" + w.temp : "" + w.temp;
+    parts.push(`<span class="tk">${wIcon(w.code)} ${name} ${t}°C</span>`);
+  });
+  const html = parts.join('<span style="color:#666">•</span>');
+  const track = document.getElementById("tickerTrack");
+  if(track) track.innerHTML = html + '<span style="color:#666">•</span>' + html + '<span style="color:#666">•</span>';
+  const usd = RATES.items.find(r=>r.code === "USD");
+  const ue = document.getElementById("usdText");
+  if(ue && usd) ue.textContent = "USD: " + fmtRate(usd.mnt) + "₮";
+  const wt = document.getElementById("weatherText");
+  const ub = WEATHER[0];
+  if(wt && ub) wt.textContent = wIcon(ub.code) + " " + (LANG === "en" ? ub.cityEn : ub.city) + " " + (ub.temp > 0 ? "+" + ub.temp : ub.temp) + "°C";
+}
+function refreshWeather(){
+  WEATHER.forEach((w, idx)=>{
+    const url = "https://api.open-meteo.com/v1/forecast?latitude=" + w.lat + "&longitude=" + w.lon + "&current=temperature_2m%2Cweather_code&timezone=" + encodeURIComponent(w.tz);
+    fetch(url).then(r=>r.json()).then(d=>{
+      if(d && d.current){ WEATHER[idx].temp = Math.round(d.current.temperature_2m); WEATHER[idx].code = d.current.weather_code; renderData(); }
+    }).catch(()=>{});
+  });
+}
+
 const VIDEOS = [
   {yt:"8clJMGivhdk", title:"Ургацын далай: Төв, Сэлэнгэ аймгаас бэлтгэв", titleEn:"Harvest report from Tuv and Selenge provinces", src:"МҮОНТ", srcEn:"MNB", srcFull:"МҮОНТ (Монголын үндэсний олон нийтийн телевиз)", srcFullEn:"MNB (Mongolian National Broadcaster)"},
   {yt:"EFvP4UO5m8o", title:"“Цагийн хүрд” мэдээллийн хөтөлбөр /2026.10.24/", titleEn:"'Tsagiin Khurd' news program /2026.10.24/", src:"МҮОНТ", srcEn:"MNB", srcFull:"МҮОНТ (Монголын үндэсний олон нийтийн телевиз)", srcFullEn:"MNB (Mongolian National Broadcaster)"},
@@ -137,6 +197,7 @@ function renderHome(){
     <div class="feat-row">${row.map(a=>cardHTML(a)).join("")}</div>`;
   colHTML("uls-tor","politicsCol");
   colHTML("niigem","societyCol");
+  renderData();
   document.getElementById("videoGrid").innerHTML = VIDEOS.map((v,i)=>`
     <div class="video-card" onclick="openVideo(${i})">
       <div class="imgwrap"><img src="https://i.ytimg.com/vi/${v.yt}/hqdefault.jpg" alt="" loading="lazy"><span class="play-badge">▶</span></div>
@@ -268,3 +329,4 @@ window.addEventListener("scroll", ()=>toTop.classList.toggle("show", window.scro
 toTop.addEventListener("click", ()=>window.scrollTo({top:0,behavior:"smooth"}));
 
 applyLang();
+refreshWeather();
