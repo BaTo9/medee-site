@@ -82,10 +82,10 @@ function aText(a){ if(a.text) return LANG === "en" ? (a.textEn || a.text) : a.te
 function aRegion(a){ return a.region ? ((REGIONS[LANG] && REGIONS[LANG][a.region]) || a.region) : ""; }
 
 const VIDEOS = [
-  {yt:"8clJMGivhdk", title:"Ургацын далай: Төв, Сэлэнгэ аймгаас бэлтгэв", titleEn:"Harvest report from Tuv and Selenge provinces", src:"МҮОНТ", srcEn:"MNB"},
-  {yt:"EFvP4UO5m8o", title:"“Цагийн хүрд” мэдээллийн хөтөлбөр /2026.10.24/", titleEn:"'Tsagiin Khurd' news program /2026.10.24/", src:"МҮОНТ", srcEn:"MNB"},
-  {yt:"3jqCzU0f_Os", title:"“Монголын мэдээ” мэдээллийн хөтөлбөр /2026.10.21/", titleEn:"'Mongolian News' program /2026.10.21/", src:"МҮОНТ", srcEn:"MNB"},
-  {yt:"Svb_STh4ayc", title:"Залуу хөгжимчдийн Олон улсын XII уралдаан: Монгол Улсын Ардын жүжигчин Ж.Чулууны нэрэмжит", titleEn:"12th International Young Musicians Competition named after People's Artist J. Chuluun", src:"МҮОНТ", srcEn:"MNB"}
+  {yt:"8clJMGivhdk", title:"Ургацын далай: Төв, Сэлэнгэ аймгаас бэлтгэв", titleEn:"Harvest report from Tuv and Selenge provinces", src:"МҮОНТ", srcEn:"MNB", srcFull:"МҮОНТ (Монголын үндэсний олон нийтийн телевиз)", srcFullEn:"MNB (Mongolian National Broadcaster)"},
+  {yt:"EFvP4UO5m8o", title:"“Цагийн хүрд” мэдээллийн хөтөлбөр /2026.10.24/", titleEn:"'Tsagiin Khurd' news program /2026.10.24/", src:"МҮОНТ", srcEn:"MNB", srcFull:"МҮОНТ (Монголын үндэсний олон нийтийн телевиз)", srcFullEn:"MNB (Mongolian National Broadcaster)"},
+  {yt:"FPh0_NOsWxw", title:"Сэтгүүлч Бадарчийн Жаргалмаагийн Өмнөд Судан улсад хийсэн сурвалжлага", titleEn:"Journalist Badarchiin Jargalmaa's report from South Sudan", src:"Eagle TV", srcEn:"Eagle TV", srcFull:"Eagle TV (Ийгл телевиз)", srcFullEn:"Eagle TV"},
+  {yt:"8mNrAC85WMk", title:"Тоон тойм: Амнатын асуудал хуулийн нэмэлт өөрчлөлтөнд хэрхэн туссан бэ", titleEn:"Analysis: How the mineral royalty issue featured in the legal amendments", src:"Eagle TV", srcEn:"Eagle TV", srcFull:"Eagle TV (Ийгл телевиз)", srcFullEn:"Eagle TV"}
 ];
 
 const AUTHORS = [
@@ -227,7 +227,7 @@ function openVideo(i){
   const v = VIDEOS[i]; if(!v) return;
   document.getElementById("videoFrame").src = "https://www.youtube-nocookie.com/embed/" + v.yt + "?autoplay=1&rel=0";
   document.getElementById("videoTitle").textContent = LANG === "en" ? (v.titleEn || v.title) : v.title;
-  document.getElementById("videoSrc").textContent = (LANG === "en" ? "Source: " : "Эх сурвалж: ") + (LANG === "en" ? (v.srcEn || v.src) : v.src) + (LANG === "en" ? " (Mongolian National Broadcaster)" : " (Монголын үндэсний олон нийтийн телевиз)");
+  document.getElementById("videoSrc").textContent = (LANG === "en" ? "Source: " : "Эх сурвалж: ") + (LANG === "en" ? (v.srcFullEn || v.srcEn || v.src) : (v.srcFull || v.src));
   document.getElementById("videoModal").classList.add("open");
   document.body.style.overflow = "hidden";
 }
