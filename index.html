@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Монголын болон дэлхийн шинэ мэдээ — өглөө бүр 06:00-д шинэчлэгдэнэ.">
 <meta name="twitter:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Panorama%20Ulan%20Bator%2037.JPG?width=1200">
 <meta name="theme-color" content="#d92323">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 <link rel="icon" type="image/svg+xml" href="logo-mark.svg">
 </head>
 <body>
@@ -187,7 +187,19 @@
   </div>
 </div>
 
+<!-- Видео цонх -->
+<div class="modal" id="videoModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeVideo()">✕</button>
+    <div class="video-frame"><iframe id="videoFrame" src="" title="Видео" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="modal-body">
+      <h2 id="videoTitle"></h2>
+      <p class="modal-time" id="videoSrc"></p>
+    </div>
+  </div>
 </div>
-<script src="script.js?v=12"></script>
+
+</div>
+<script src="script.js?v=13"></script>
 </body>
 </html>

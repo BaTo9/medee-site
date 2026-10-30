@@ -82,10 +82,10 @@ function aText(a){ if(a.text) return LANG === "en" ? (a.textEn || a.text) : a.te
 function aRegion(a){ return a.region ? ((REGIONS[LANG] && REGIONS[LANG][a.region]) || a.region) : ""; }
 
 const VIDEOS = [
-  {title:"Видео: Хотын хөгжлийн талаарх тусгай сурвалжилга", titleEn:"Video: Special report on urban development", img:"https://picsum.photos/seed/video1/640/420"},
-  {title:"Видео: Төсвийн зарцуулалтын талаар ярилцлага", titleEn:"Video: Interview on budget spending", img:"https://picsum.photos/seed/video2/640/420"},
-  {title:"Видео: Аялал жуулчлалын улирлын нээлтийн тойм", titleEn:"Video: Tourism season opening highlights", img:"https://picsum.photos/seed/video3/640/420"},
-  {title:"Видео: Залуучуудын технологийн форумын онцлох мөчүүд", titleEn:"Video: Highlights from the youth technology forum", img:"https://picsum.photos/seed/video4/640/420"}
+  {yt:"8clJMGivhdk", title:"Ургацын далай: Төв, Сэлэнгэ аймгаас бэлтгэв", titleEn:"Harvest report from Tuv and Selenge provinces", src:"МҮОНТ", srcEn:"MNB"},
+  {yt:"EFvP4UO5m8o", title:"“Цагийн хүрд” мэдээллийн хөтөлбөр /2026.10.24/", titleEn:"'Tsagiin Khurd' news program /2026.10.24/", src:"МҮОНТ", srcEn:"MNB"},
+  {yt:"3jqCzU0f_Os", title:"“Монголын мэдээ” мэдээллийн хөтөлбөр /2026.10.21/", titleEn:"'Mongolian News' program /2026.10.21/", src:"МҮОНТ", srcEn:"MNB"},
+  {yt:"Svb_STh4ayc", title:"Залуу хөгжимчдийн Олон улсын XII уралдаан: Монгол Улсын Ардын жүжигчин Ж.Чулууны нэрэмжит", titleEn:"12th International Young Musicians Competition named after People's Artist J. Chuluun", src:"МҮОНТ", srcEn:"MNB"}
 ];
 
 const AUTHORS = [
@@ -138,9 +138,9 @@ function renderHome(){
   colHTML("uls-tor","politicsCol");
   colHTML("niigem","societyCol");
   document.getElementById("videoGrid").innerHTML = VIDEOS.map((v,i)=>`
-    <div class="video-card" onclick="openArticle(${ARTICLES[i%ARTICLES.length].id})">
-      <div class="imgwrap"><img src="${v.img}" alt="" loading="lazy"><span class="play-badge">▶</span></div>
-      <h4>${LANG === "en" ? (v.titleEn || v.title) : v.title}</h4></div>`).join("");
+    <div class="video-card" onclick="openVideo(${i})">
+      <div class="imgwrap"><img src="https://i.ytimg.com/vi/${v.yt}/hqdefault.jpg" alt="" loading="lazy"><span class="play-badge">▶</span></div>
+      <h4>${LANG === "en" ? (v.titleEn || v.title) : v.title}</h4><p class="vsrc">${LANG === "en" ? "Source: " : "Эх сурвалж: "}${LANG === "en" ? (v.srcEn || v.src) : v.src}</p></div>`).join("");
   document.getElementById("authorsRow").innerHTML = AUTHORS.map(a=>`
     <div class="author-card"><p class="a-name">${t("author_prefix")}${LANG === "en" ? a.nameEn : a.name}</p><p class="a-quote">${LANG === "en" ? a.quoteEn : a.quote}</p></div>`).join("");
   const wg = document.getElementById("worldGrid");
@@ -221,6 +221,22 @@ function closeArticle(){
   document.body.style.overflow = "";
 }
 document.getElementById("articleModal").addEventListener("click", e=>{ if(e.target.id==="articleModal") closeArticle(); });
+
+// ===== Видео =====
+function openVideo(i){
+  const v = VIDEOS[i]; if(!v) return;
+  document.getElementById("videoFrame").src = "https://www.youtube-nocookie.com/embed/" + v.yt + "?autoplay=1&rel=0";
+  document.getElementById("videoTitle").textContent = LANG === "en" ? (v.titleEn || v.title) : v.title;
+  document.getElementById("videoSrc").textContent = (LANG === "en" ? "Source: " : "Эх сурвалж: ") + (LANG === "en" ? (v.srcEn || v.src) : v.src) + (LANG === "en" ? " (Mongolian National Broadcaster)" : " (Монголын үндэсний олон нийтийн телевиз)");
+  document.getElementById("videoModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeVideo(){
+  document.getElementById("videoModal").classList.remove("open");
+  document.getElementById("videoFrame").src = "";
+  document.body.style.overflow = "";
+}
+document.getElementById("videoModal").addEventListener("click", e=>{ if(e.target.id==="videoModal") closeVideo(); });
 
 // ===== Хайлт =====
 document.getElementById("searchBtn").addEventListener("click", ()=>{
