@@ -1,5 +1,5 @@
 // ===== Хэл (MN / EN) =====
-let LANG = localStorage.getItem("tugee-lang") || "mn";
+let LANG = localStorage.getItem("tana-lang") || "mn";
 
 const UI = {
   mn: {
@@ -12,9 +12,9 @@ const UI = {
     today: "Өнөөдөр: ", weather: "☀ Улаанбаатар 4°C",
     footer_addr: "📍 Улаанбаатар хот, Сүхбаатар дүүрэг, 7-р хороо, 11-р хороолол, 14180",
     link_about: "Бидний тухай", link_ads: "Сурталчилгаа байршуулах", link_terms: "Үйлчилгээний нөхцөл",
-    copyright: "© 2026 TUGEE.mn (ТҮГЭЭ). Бүх эрх хуулиар хамгаалагдсан.", img_credit: "Мэдээний зургууд: Wikimedia Commons — чөлөөт лицензтэй зургууд.",
+    copyright: "© 2026 TANA.mn (ТАНА). Бүх эрх хуулиар хамгаалагдсан.", img_credit: "Мэдээний зургууд: Wikimedia Commons — чөлөөт лицензтэй зургууд.",
     no_news: "Мэдээ алга.", no_cat: "Энэ ангилалд одоогоор мэдээ алга.", no_result: "Илэрц олдсонгүй.",
-    author_prefix: "Нийтлэлч · ", doc_title: "TUGEE.mn — ТҮГЭЭ | Мэдээг түгээ"
+    author_prefix: "Нийтлэлч · ", doc_title: "TANA.mn — ТАНА | Таны мэдээ"
   },
   en: {
     nav_home: "HOME", nav_uls: "POLITICS", nav_niigem: "SOCIETY", nav_ediin: "ECONOMY",
@@ -26,9 +26,9 @@ const UI = {
     today: "Today: ", weather: "☀ Ulaanbaatar 4°C",
     footer_addr: "📍 11th khoroolol, 7th khoroo, Sukhbaatar district, Ulaanbaatar 14180",
     link_about: "About us", link_ads: "Advertise with us", link_terms: "Terms of service",
-    copyright: "© 2026 TUGEE.mn. All rights reserved.", img_credit: "News photos: Wikimedia Commons — freely licensed images.",
+    copyright: "© 2026 TANA.mn. All rights reserved.", img_credit: "News photos: Wikimedia Commons — freely licensed images.",
     no_news: "No news yet.", no_cat: "No news in this category yet.", no_result: "No results found.",
-    author_prefix: "Columnist · ", doc_title: "TUGEE.mn — News from Mongolia"
+    author_prefix: "Columnist · ", doc_title: "TANA.mn — News from Mongolia"
   }
 };
 function t(key){ return (UI[LANG] && UI[LANG][key]) || UI.mn[key] || key; }
@@ -232,7 +232,7 @@ function applyLang(){
   if(inp) inp.placeholder = t("search_ph");
   const w = document.getElementById("weatherText");
   if(w) w.textContent = t("weather");
-  document.querySelectorAll(".js-logo-name").forEach(el=>{ el.textContent = LANG === "en" ? "TUGEE" : "ТҮГЭЭ"; });
+  document.querySelectorAll(".js-logo-name").forEach(el=>{ el.textContent = LANG === "en" ? "TANA" : "ТАНА"; });
   document.querySelectorAll(".js-logo-suffix").forEach(el=>{ el.textContent = LANG === "en" ? ".mn" : ".мн"; });
   const lb = document.getElementById("langBtn");
   if(lb) lb.textContent = LANG === "en" ? "MN" : "EN";
@@ -242,7 +242,7 @@ function applyLang(){
 }
 function setLang(l){
   LANG = l;
-  localStorage.setItem("tugee-lang", l);
+  localStorage.setItem("tana-lang", l);
   applyLang();
 }
 function toggleLang(){ setLang(LANG === "en" ? "mn" : "en"); }
